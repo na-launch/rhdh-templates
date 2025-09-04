@@ -17,7 +17,7 @@ spec:
       repoName:
         title: Repository Name
         type: string
-        default: demo-nodejs-app
+        default: demo-nodejs-app-${{ '' | now | date('yyyyMMddHHmmss') }}
       port:
         title: Port you would like your nodejs app to run on (defaults to 3000)
         type: number
