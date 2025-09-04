@@ -33,6 +33,7 @@ spec:
       namespace:
         title: OpenShift Namespace 
         type: string
+        default: demo-node-js-v101
 
   steps:
     - id: fetch
@@ -45,6 +46,7 @@ spec:
           owner: na-launch
           description: ${{ parameters.description }}
           port: ${{ parameters.port }}
+          namespace: ${{ parameters.namespace }}
 
 
     - id: publish
