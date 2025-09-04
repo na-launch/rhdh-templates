@@ -50,7 +50,7 @@ spec:
         repoUrl: github.com?owner=na-launch&repo=${{ parameters.repoName }}
         description: ${{ parameters.description }}
         defaultBranch: main
-        repoVisibility: public
+        repoVisibility: private
 
     - id: register
       name: Register in Catalog
