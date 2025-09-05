@@ -2,8 +2,8 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: nalaunch-devhub-nodejs-template
-  title: ACME - First Node.js App
-  description: Demo template that scaffolds a Node.js app and registers it in Developer Hub
+  title: ACME - Node.js App
+  description: Use this template ACME devs as a scaffolded Node.js app
   tags:
     - nodejs
     - demo
@@ -47,8 +47,6 @@ spec:
           description: ${{ parameters.description }}
           port: ${{ parameters.port }}
           namespace: ${{ parameters.namespace }}
-
-
     - id: publish
       name: Publish to GitHub
       action: publish:github
@@ -57,7 +55,6 @@ spec:
         description: ${{ parameters.description }}
         defaultBranch: main
         repoVisibility: private
-
     - id: register
       name: Register in Catalog
       action: catalog:register
