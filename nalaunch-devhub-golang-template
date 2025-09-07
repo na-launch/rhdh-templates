@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: nalaunch-devhub-nodejs-template
-  title: Sample - First golang.js App 
+  title: Sample - GOLANG scaffolded App
   description: Demo template that scaffolds a Node.js app and registers it in Developer Hub
   tags:
     - nodejs
@@ -40,7 +40,7 @@ spec:
       name: Fetch from GitHub Skeleton
       action: fetch:template
       input:
-        url: https://github.com/na-launch/nodejs-skeleton
+        url: # TODO MUST FILL THIS OUT
         values:
           repoName: ${{ parameters.repoName }}
           owner: na-launch

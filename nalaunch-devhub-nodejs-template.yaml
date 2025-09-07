@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: nalaunch-devhub-nodejs-template
-  title: ACME - Node.js App
+  title: Sample - Node.js scaffolded App
   description: Use this template ACME devs as a scaffolded Node.js app
   tags:
     - nodejs
@@ -33,14 +33,14 @@ spec:
       namespace:
         title: OpenShift Namespace 
         type: string
-        default: demo-node-js-v101
+        default: my-sample-devhub-templated-application
 
   steps:
     - id: fetch
       name: Fetch from GitHub Skeleton
       action: fetch:template
       input:
-        url: https://github.com/na-launch/nodejs-skeleton
+        url: # TODO MUST FILL THIS OUT
         values:
           repoName: ${{ parameters.repoName }}
           owner: na-launch
