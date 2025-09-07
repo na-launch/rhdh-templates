@@ -40,7 +40,7 @@ spec:
       name: Fetch from GitHub Skeleton
       action: fetch:template
       input:
-        url: # TODO MUST FILL THIS OUT
+        url: https://github.com/na-launch/nodejs-skeleton
         values:
           repoName: ${{ parameters.repoName }}
           owner: na-launch
