@@ -2,8 +2,8 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: nalaunch-devhub-nodejs-template
-  title: ACME template for node.js apps
-  description: ACME developers can use this template for scaffolded Node.js app
+  title: Launch Team template for node.js apps
+  description: Launch Taeam developers can use this template for scaffolded Node.js app
   tags:
     - nodejs
     - demo
