@@ -28,6 +28,7 @@ spec:
       action: publish:gitlab
       input:
         repoUrl: gitlab.com?owner=${{ user.entity.metadata.name }}&repo=testing
+        setUserAsOwner: false
         defaultBranch: main
         description: Quarkus Translation Service generated from RHDH
         visibility: public
