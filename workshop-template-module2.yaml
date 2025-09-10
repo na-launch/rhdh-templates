@@ -39,6 +39,21 @@ spec:
     #################################
     - id: publishRepo
       name: "Create Empty Repository"
+      action: publish:gitlab
+      input:
+        setUserAsOwner: false
+        description: |
+          Self-Service Repository
+        repoUrl: gitlab.com?owner=developers&repo=${{ parameters.general.gitlabRepository }}
+        defaultBranch: main
+        settings:
+          visibility: "internal"
+        branches:
+          - name: main
+            protect: true
+    
+    - id: publishRepo
+      name: "Publish Content to Repository"
       #action: publish:gitlab
       action: gitlab:repo:push
       input:
