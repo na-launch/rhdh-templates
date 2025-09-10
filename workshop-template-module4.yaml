@@ -1,7 +1,7 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: quarkus-translation-app
+  name: quarkus-translation-app-7
   title: Quarkus Translation Service
   description: Quarkus app that serves translations from JSON with Dev Spaces support | v7
   tags:
