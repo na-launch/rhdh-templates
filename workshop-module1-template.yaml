@@ -37,10 +37,11 @@ spec:
     #################################
     ## Create Empty Repository
     #################################
-    - id: publishEmptyRepo
+    - id: publishRepo
       name: "Create Empty Repository"
       action: publish:gitlab
       input:
+        setUserAsOwner: false
         description: |
           Self-Service Repository
         repoUrl: gitlab.com?owner=developers&repo=${{ parameters.general.gitlabRepository }}
@@ -51,15 +52,16 @@ spec:
           - name: main
             protect: true
 
-    - id: publish
-      name: Push to GitLab
-      action: publish:gitlab
-      input:
-        repoUrl: gitlab.com?owner=developers&repo=${{ parameters.general.gitlabRepository }}
-        setUserAsOwner: false
-        defaultBranch: main
-        description: Quarkus Translation Service generated from RHDH
-        visibility: public
+    #- id: publish
+      #name: "Create Self-Service Repository"
+      #action: gitlab:repo:push
+      #input:
+        #description: |
+          #Self-Service Repository
+        #repoUrl: gitlab.com?owner=developers&repo=${{ parameters.general.gitlabRepository }}
+        #branchName: main
+        #commitAction: create
+        #commitMessage: "Publish repository skeleton"
 
     - id: register
       name: Register in Catalog
