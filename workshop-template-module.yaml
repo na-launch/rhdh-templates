@@ -34,9 +34,9 @@ spec:
         url: https://github.com/na-launch/mizho-workshop-module1
         targetPath: ./
         
-    #################################
-    ## Create Empty Repository
-    #################################
+    ###########################################
+    ## Create and Publish Content to Repository
+    ###########################################
     - id: publishRepo
       name: "Publish Content to Repository"
       action: publish:gitlab
@@ -51,28 +51,6 @@ spec:
         branches:
           - name: main
             protect: true
-    
-#    - id: publishRepo
-#      name: "Publish Content to Repository"
-#      #action: publish:gitlab
-#      action: gitlab:repo:push
-#      input:
-#        #setUserAsOwner: false        
-#        repoUrl: gitlab.com?owner=developers&repo=${{ parameters.general.gitlabRepository }}
-#        branchName: main
-#        commitAction: create
-#        commitMessage: "Publish repository skeleton"
-
-    #- id: publish
-      #name: "Create Self-Service Repository"
-      #action: gitlab:repo:push
-      #input:
-        #description: |
-          #Self-Service Repository
-        #repoUrl: gitlab.com?owner=developers&repo=${{ parameters.general.gitlabRepository }}
-        #branchName: main
-        #commitAction: create
-        #commitMessage: "Publish repository skeleton"
 
     - id: register
       name: Register in Catalog
