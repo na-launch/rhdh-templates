@@ -13,7 +13,24 @@ spec:
   owner: group:default/developers
   type: service
 
-  parameters: []
+  parameters:
+  - title: Workshop Configuration
+    properties:
+      general:
+        type: object
+        title: General Settings
+        properties:
+          gitlabOwner:
+            title: GitLab Owner
+            type: string
+            default: self-provisioned
+            description: GitLab group or username that owns the repository
+            ui:widget: hidden
+          gitlabRepository:
+            title: GitLab Repository Name
+            type: string
+            default: workshop-repository
+            description: Repository name used to initialize workshop
 
   steps:
     - id: fetch
@@ -22,6 +39,23 @@ spec:
       input:
         url: https://github.com/na-launch/mizho-workshop-module1
         targetPath: ./
+        
+    #################################
+    ## Create Empty Repository
+    #################################
+    - id: publishEmptyRepo
+      name: "Create Empty Repository"
+      action: publish:gitlab
+      input:
+        description: |
+          Self-Service Repository
+        repoUrl: gitlab.com?owner=${{ parameters.general.gitlabOwner }}&repo=${{ parameters.general.gitlabRepository }}
+        defaultBranch: main
+        settings:
+          visibility: "internal"
+        branches:
+          - name: main
+            protect: true
 
     - id: publish
       name: Push to GitLab
