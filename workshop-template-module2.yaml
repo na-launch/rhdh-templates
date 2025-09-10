@@ -3,7 +3,7 @@ kind: Template
 metadata:
   name: quarkus-translation-app
   title: Quarkus Translation Service
-  description: Quarkus app that serves translations from JSON with Dev Spaces support | v5
+  description: Quarkus app that serves translations from JSON with Dev Spaces support | v6
   tags:
     - quarkus
     - java
@@ -37,8 +37,8 @@ spec:
     #################################
     ## Create Empty Repository
     #################################
-    - id: createEmptyRepo
-      name: "Create Empty Repository"
+    - id: publishRepo
+      name: "Publish Content to Repository"
       action: publish:gitlab
       input:
         setUserAsOwner: false
@@ -52,16 +52,16 @@ spec:
           - name: main
             protect: true
     
-    - id: publishRepo
-      name: "Publish Content to Repository"
-      #action: publish:gitlab
-      action: gitlab:repo:push
-      input:
-        #setUserAsOwner: false        
-        repoUrl: gitlab.com?owner=developers&repo=${{ parameters.general.gitlabRepository }}
-        branchName: main
-        commitAction: create
-        commitMessage: "Publish repository skeleton"
+#    - id: publishRepo
+#      name: "Publish Content to Repository"
+#      #action: publish:gitlab
+#      action: gitlab:repo:push
+#      input:
+#        #setUserAsOwner: false        
+#        repoUrl: gitlab.com?owner=developers&repo=${{ parameters.general.gitlabRepository }}
+#        branchName: main
+#        commitAction: create
+#        commitMessage: "Publish repository skeleton"
 
     #- id: publish
       #name: "Create Self-Service Repository"
