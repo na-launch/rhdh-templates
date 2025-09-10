@@ -27,7 +27,7 @@ spec:
       name: Push to GitLab
       action: publish:gitlab
       input:
-        repoUrl: gitlab.apps.mizuho-workshop.qc2c.p1.openshiftapps.com?owner=developers&repo=module3
+        repoUrl: https://gitlab.apps.mizuho-workshop.qc2c.p1.openshiftapps.com/kechung/devspaces-testing
         defaultBranch: main
         description: Quarkus Translation Service generated from RHDH
         visibility: internal
