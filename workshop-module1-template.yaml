@@ -10,7 +10,7 @@ metadata:
     - openshift
     - devfile
 spec:
-  owner: group:developers
+  owner: group:default/developers
   type: service
 
   parameters: []
@@ -27,10 +27,10 @@ spec:
       name: Push to GitLab
       action: publish:gitlab
       input:
-        repoUrl: gitlab.apps.mizuho-workshop.qc2c.p1.openshiftapps.com?owner=self-provisioned&repo=testing
+        repoUrl: gitlab.com?owner=${{ user.entity.metadata.name }}&repo=testing
         defaultBranch: main
         description: Quarkus Translation Service generated from RHDH
-        #visibility: internal
+        visibility: public
 
     - id: register
       name: Register in Catalog
