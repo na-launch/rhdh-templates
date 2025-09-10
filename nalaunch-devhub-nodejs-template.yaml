@@ -3,7 +3,7 @@ kind: Template
 metadata:
   name: nalaunch-devhub-nodejs-template
   title: Template example to build node.js apps
-  description: Developers can build an applicaiton by scaffolding this template for (Node.js)
+  description: Developers can build an application by scaffolding this template for (Node.js)
   tags:
     - nodejs
     - demo
