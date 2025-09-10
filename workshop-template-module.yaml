@@ -3,7 +3,7 @@ kind: Template
 metadata:
   name: quarkus-translation-app-7
   title: Quarkus Translation Service
-  description: Quarkus app that serves translations from JSON with Dev Spaces support | v7
+  description: Quarkus app that serves translations from JSON with Dev Spaces support | v1
   tags:
     - quarkus
     - java
@@ -44,7 +44,7 @@ spec:
         setUserAsOwner: false
         description: |
           Self-Service Repository
-        repoUrl: gitlab.com?owner=zak&repo=${{ parameters.general.gitlabRepository }}
+        repoUrl: gitlab.com?owner=developers&repo=${{ parameters.general.gitlabRepository }}
         defaultBranch: main
         settings:
           visibility: "internal"
