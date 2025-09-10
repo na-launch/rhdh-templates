@@ -1,0 +1,46 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: quarkus-translation-app
+  title: Quarkus Translation Service
+  description: Quarkus app that serves translations from JSON with Dev Spaces support
+  tags:
+    - quarkus
+    - java
+    - openshift
+    - devfile
+spec:
+  owner: group:developers
+  type: service
+
+  parameters: []
+
+  steps:
+    - id: fetch
+      name: Fetch Base Repo
+      action: fetch:template
+      input:
+        url: https://github.com/na-launch/mizho-workshop-module1
+        targetPath: ./
+
+    - id: publish
+      name: Push to GitLab
+      action: publish:gitlab
+      input:
+        repoUrl: gitlab.apps.mizuho-workshop.qc2c.p1.openshiftapps.com?owner=workshop-group&repo=quarkus-translation-app
+        defaultBranch: main
+        description: Quarkus Translation Service generated from RHDH
+        visibility: internal
+
+    - id: register
+      name: Register in Catalog
+      action: catalog:register
+      input:
+        repoContentsUrl: ${{ steps['publish'].output.repoContentsUrl }}
+        catalogInfoPath: /catalog-info.yaml
+
+  output:
+    links:
+      - title: View in Developer Hub
+        icon: catalog
+        entityRef: component:quarkus-translation-app
