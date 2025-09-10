@@ -25,6 +25,10 @@ spec:
             type: string
             default: workshop-repository
             description: Repository name used to initialize workshop
+          token:
+            title: GitLab Token
+            type: string
+            description: GitLab token
 
   steps:
     - id: fetch
@@ -48,6 +52,7 @@ spec:
         defaultBranch: main
         settings:
           visibility: "internal"
+        token: ${{ parameters.token }}
         branches:
           - name: main
             protect: true
