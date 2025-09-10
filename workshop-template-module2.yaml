@@ -1,0 +1,77 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: quarkus-translation-app
+  title: Quarkus Translation Service
+  description: Quarkus app that serves translations from JSON with Dev Spaces support | v1
+  tags:
+    - quarkus
+    - java
+    - openshift
+    - devfile
+spec:
+  owner: group:default/developers
+  type: service
+
+  parameters:
+  - title: Workshop Configuration
+    properties:
+      general:
+        type: object
+        title: General Settings
+        properties:          
+          gitlabRepository:
+            title: GitLab Repository Name
+            type: string
+            default: workshop-repository
+            description: Repository name used to initialize workshop
+
+  steps:
+    - id: fetch
+      name: Fetch Base Repo
+      action: fetch:template
+      input:
+        url: https://github.com/na-launch/mizho-workshop-module1
+        targetPath: ./
+        
+    #################################
+    ## Create Empty Repository
+    #################################
+    - id: publishRepo
+      name: "Create Empty Repository"
+      action: publish:gitlab
+      input:
+        setUserAsOwner: false
+        description: |
+          Self-Service Repository
+        repoUrl: gitlab.com?owner=developers&repo=${{ parameters.general.gitlabRepository }}
+        defaultBranch: main
+        settings:
+          visibility: "internal"
+        branches:
+          - name: main
+            protect: true
+
+    #- id: publish
+      #name: "Create Self-Service Repository"
+      #action: gitlab:repo:push
+      #input:
+        #description: |
+          #Self-Service Repository
+        #repoUrl: gitlab.com?owner=developers&repo=${{ parameters.general.gitlabRepository }}
+        #branchName: main
+        #commitAction: create
+        #commitMessage: "Publish repository skeleton"
+
+    - id: register
+      name: Register in Catalog
+      action: catalog:register
+      input:
+        repoContentsUrl: ${{ steps['publish'].output.repoContentsUrl }}
+        catalogInfoPath: /catalog-info.yaml
+
+  output:
+    links:
+      - title: View in Developer Hub
+        icon: catalog
+        entityRef: component:quarkus-translation-app
