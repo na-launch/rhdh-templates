@@ -3,7 +3,7 @@ kind: Template
 metadata:
   name: quarkus-translation-app
   title: Quarkus Translation Service
-  description: Quarkus app that serves translations from JSON with Dev Spaces support | v3
+  description: Quarkus app that serves translations from JSON with Dev Spaces support | v4
   tags:
     - quarkus
     - java
