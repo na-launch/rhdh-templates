@@ -19,13 +19,7 @@ spec:
       general:
         type: object
         title: General Settings
-        properties:
-          gitlabOwner:
-            title: GitLab Owner
-            type: string
-            default: self-provisioned
-            description: GitLab group or username that owns the repository
-            ui:widget: hidden
+        properties:          
           gitlabRepository:
             title: GitLab Repository Name
             type: string
@@ -49,7 +43,7 @@ spec:
       input:
         description: |
           Self-Service Repository
-        repoUrl: gitlab.com?owner=${{ parameters.general.gitlabOwner }}&repo=${{ parameters.general.gitlabRepository }}
+        repoUrl: gitlab.com?owner=developers&repo=${{ parameters.general.gitlabRepository }}
         defaultBranch: main
         settings:
           visibility: "internal"
